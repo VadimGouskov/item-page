@@ -1,9 +1,9 @@
 import React from 'react';
 import Item from './Item';
 import { connect } from 'react-redux';
-import items from '../reducers/items';
-import addItem, { ItemFilters } from '../actions'
+import items, { addItem } from '../ducks/items';
 import { bindActionCreators } from 'redux';
+import { ItemFilters } from '../ducks/itemFilter';
 
 // COMPONENT
 type ItemPageProps = 
@@ -28,7 +28,7 @@ const getFilteredItems = (items: any, filter: ItemFilters) => {
     case ItemFilters.SHOW_ALL:
       return items;
     case ItemFilters.SHOW_THREE:
-      return items.slice(0, 4);
+      return items.slice(0, 3);
     default:
        return items;
   }
