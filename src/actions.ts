@@ -1,18 +1,18 @@
-const addProduct = (name: any) => ({
-  type: 'ADD_PRODUCT',
+const addItem = (name: any) => ({
+  type: 'ADD_ITEM',
   name: name,
 })
 
-const setProductFilter = (filter: any) => ({
-  type: 'SET_PRODUCT_FILTER',
+const setItemFilter = (filter: any) => ({
+  type: 'SET_ITEM_FILTER',
   filter: filter,
 })
 
-export enum ProductFilters {
+export enum ItemFilters {
   SHOW_ALL,
   SHOW_THREE,
 }
 
 
-export default addProduct;
-export { setProductFilter };
+export default addItem;
+export { setItemFilter };

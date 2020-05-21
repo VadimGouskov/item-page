@@ -1,16 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import products from './products'
-import productsFilter from './productsFilter'
+import items from './items'
+import itemsFilter from './itemsFilter'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 const rootReducer = combineReducers({
-  products,
-  productsFilter
+  items,
+  itemsFilter
 });
 
 export const initialState = {
-    products: ['test', 'best', 'rest', 'chrest']
+    items: ['test', 'best', 'rest', 'chrest']
 }
 
 const middleware = [];

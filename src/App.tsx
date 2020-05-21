@@ -1,12 +1,12 @@
 import React from 'react';
-import ProductPage from './components/ProductPage';
-import ProductFilter from './components/ProductFilter';
+import ItemPage from './components/ItemPage';
+import ItemFilter from './components/ItemFilter';
 
 const App: React.FC = () => {
   return (
     <div>
-      <ProductFilter/>
-      <ProductPage />
+      <ItemFilter/>
+      <ItemPage />
     </div>
   );
 }
