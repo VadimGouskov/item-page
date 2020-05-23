@@ -1,19 +1,19 @@
-
+import Item from "../types/item"
 const ADD = 'item-page/items/ADD'
 
-const items = (state = ['INITIALSTATE'], action: any) => {
-    switch (action.type) {
+const items = (state = [] as Item[], action: ReturnType<typeof addItem> | undefined) => {
+    switch (action!.type) {
       case ADD:
         return [
           ...state,
-          action.payload
+          action!.payload
         ]
       default:
         return state
     }
 }
 
-const addItem = (item: any) => ({
+const addItem = (item: Item) => ({
   type: ADD,
   payload: item,
 })

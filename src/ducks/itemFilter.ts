@@ -1,6 +1,6 @@
 const UPDATE = 'item-page/itemFilter/UPDATE'
 
-const itemFilter = (state = ItemFilters.SHOW_ALL, action: any) => {
+const itemFilter = (state = ItemFilters.SHOW_ALL, action: ReturnType<typeof updateItemFilter>) => {
     switch(action.type) {
         case UPDATE:
             return action.payload;
@@ -9,7 +9,7 @@ const itemFilter = (state = ItemFilters.SHOW_ALL, action: any) => {
     }
 }
 
-const updateItemFilter = (filter: any) => ({
+const updateItemFilter = (filter: ItemFilters) => ({
     type: UPDATE,
     payload: filter,
 })

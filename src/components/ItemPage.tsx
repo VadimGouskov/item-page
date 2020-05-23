@@ -1,8 +1,10 @@
 import React from 'react';
 import Item from './Item';
 import { connect } from 'react-redux';
-import items, { addItem } from '../ducks/items';
+import { addItem } from '../ducks/items';
 import { bindActionCreators } from 'redux';
+import ItemType from '../types/item';
+import State from '../types/state';
 import { ItemFilters } from '../ducks/itemFilter';
 
 // COMPONENT
@@ -13,17 +15,26 @@ type ItemPageProps =
 const ItemPage: React.FC<ItemPageProps> = (props) => {
   return (
     <div>
-        { props.filteredItems.map((item: any) => (
+        { props.filteredItems.map((item: ItemType) => (
             // eslint-disable-next-line react/jsx-key
-            <Item name={item}/> 
+            <Item key={item.id} name={item.title}/> 
         )) }
-        <button onClick={() => props.addItem('test')}>ADD</button>
+        <button onClick={() => props.addItem(getTestItem())}>ADD</button>
     </div>
   )
 }
 
+const getTestItem = (): ItemType => {
+  return {
+    id: (Math.random()*10000).toString(),
+    title: "TITLE",
+    subtitle: "SUBTITLE",
+    description: "DESCRIPTION",
+  }
+}
+
 // METHODS 
-const getFilteredItems = (items: any, filter: ItemFilters) => {
+const getFilteredItems = (items: ItemType[], filter: ItemFilters) => {
   switch(filter) {
     case ItemFilters.SHOW_ALL:
       return items;
@@ -35,10 +46,10 @@ const getFilteredItems = (items: any, filter: ItemFilters) => {
 }
 
 // PROP MAPPING
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: State) => {
   return {
-    items: items(state.items, {}),
-    filteredItems: getFilteredItems(state.items, state.itemsFilter),
+    items: state.items,
+    filteredItems: getFilteredItems(state.items, state.itemFilter),
   }
 }
 
