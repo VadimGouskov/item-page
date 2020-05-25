@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Item from './Item';
 import { connect } from 'react-redux';
-import { addItem } from '../ducks/items';
+import { addItem, loadItems } from '../ducks/items';
 import { bindActionCreators } from 'redux';
 import ItemType from '../types/item';
 import State from '../types/state';
@@ -13,6 +13,11 @@ type ItemPageProps =
   ReturnType<typeof mapDispatchToProps>;
 
 const ItemPage: React.FC<ItemPageProps> = (props) => {
+
+  useEffect(() => {
+    props.loadItems();
+  }, [props.loadItems])
+
   return (
     <div>
         { props.filteredItems.map((item: ItemType) => (
@@ -49,12 +54,15 @@ const getFilteredItems = (items: ItemType[], filter: ItemFilters) => {
 const mapStateToProps = (state: State) => {
   return {
     items: state.items,
-    filteredItems: getFilteredItems(state.items, state.itemFilter),
+    filteredItems: getFilteredItems(state.items.items, state.itemFilter),
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators({ addItem }, dispatch);
+    return bindActionCreators({ 
+        addItem,
+        loadItems, 
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemPage);
