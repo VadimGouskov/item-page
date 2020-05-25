@@ -69,6 +69,7 @@ const loadItems = () => {
     return async (dispatch: any) => {
         dispatch(loadItemsPending())
         try {
+            // change this to a real world API
             const items = await fakeApi() as Item[];
             dispatch(loadItemsSuccess(items))
         } catch {
