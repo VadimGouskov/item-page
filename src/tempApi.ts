@@ -24,8 +24,8 @@ interface CharacterResult {
         url: string;
     };
     location: {
-        "name": "Earth (Replacement Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/20"
+        name: string;
+        url: string;
     };
     image: string;
     episode: string[];
