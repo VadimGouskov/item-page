@@ -13,14 +13,7 @@ const initialState = {
     items: {
       pending: false,
       error: {},
-      items: [{
-        id: "ID",
-        title: "TITLE",
-        subtitle: "SUBTITLE",
-        description: "DESCRIPTION",
-        imgUrl:""
-      }
-    ]},
+      items: []},
     itemFilter: ItemFilters.SHOW_ALL
 }
 

@@ -19,11 +19,14 @@ const ItemPage: React.FC<ItemPageProps> = (props) => {
   }, [props.loadItems])
 
   return (
-    <div>
-        { props.filteredItems.map((item: ItemType) => (
-            // eslint-disable-next-line react/jsx-key
-            <Item key={item.id} item={item}/> 
-        )) }
+    <div >
+        <div className='columns is-multiline'>
+            { props.filteredItems.map((item: ItemType) => (
+                <div key={item.id} className='column is-4'>
+                    <Item  item={item}/>
+                </div> 
+            )) }
+        </div>
         <button onClick={() => props.addItem(getTestItem())}>ADD</button>
     </div>
   )
