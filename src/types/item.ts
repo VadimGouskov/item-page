@@ -3,6 +3,7 @@ interface Item {
     title: string;
     subtitle: string;
     description: string;
+    imgUrl: string;
 }
 
 export default Item;

@@ -1,12 +1,18 @@
 import React from 'react';
+import ItemType from '../types/item';
 
 interface ItemProps {
-    name: string;
+    item: ItemType;
 }
 
 const Item: React.FC<ItemProps> = (props) => {
     return (
-        <h1>ITEM {props.name}</h1> 
+        <div>
+            <img src={props.item.imgUrl} alt={`image of ${props.item.title}`}/>
+            <h1> {props.item.title}</h1> 
+            <h2> {props.item.subtitle}</h2>
+            <p> {props.item.description}</p>
+        </div>
     )
 }
 

@@ -22,7 +22,7 @@ const ItemPage: React.FC<ItemPageProps> = (props) => {
     <div>
         { props.filteredItems.map((item: ItemType) => (
             // eslint-disable-next-line react/jsx-key
-            <Item key={item.id} name={item.title}/> 
+            <Item key={item.id} item={item}/> 
         )) }
         <button onClick={() => props.addItem(getTestItem())}>ADD</button>
     </div>
@@ -35,6 +35,7 @@ const getTestItem = (): ItemType => {
     title: "TITLE",
     subtitle: "SUBTITLE",
     description: "DESCRIPTION",
+    imgUrl: "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
   }
 }
 

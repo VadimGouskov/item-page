@@ -18,6 +18,7 @@ const initialState = {
         title: "TITLE",
         subtitle: "SUBTITLE",
         description: "DESCRIPTION",
+        imgUrl:""
       }
     ]},
     itemFilter: ItemFilters.SHOW_ALL

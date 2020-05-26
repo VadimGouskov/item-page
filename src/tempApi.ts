@@ -42,6 +42,7 @@ const fakeApi = async(): Promise<Item[]> => {
             title: result.name,
             subtitle: result.type,
             description: result.species,
+            imgUrl: result.image,
         };
     });
 }
