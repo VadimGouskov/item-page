@@ -1,6 +1,6 @@
 import Item from "../types/item"
 import { Items } from "../types/state"
-import fakeApi from "../tempApi"
+import fakeApi, { getcharactersFromEpisodeRange } from "../tempApi"
 
 const ADD = 'item-page/items/ADD'
 const GET_PENDING = 'item-page/items/GET_PENDING' 
@@ -30,10 +30,7 @@ const items = (state = {} as Items, action: ReturnType <typeof addItem> &
             return {
                 error: {},
                 pending: false,
-                items: [
-                    ...state.items,
-                    ...action?.payload
-                ]
+                items: action?.payload
             }
         case GET_FAILED: {
             return {
@@ -78,6 +75,18 @@ const loadItems = () => {
     }
 }
 
+const loadItemsForRange = (min: number, max: number) => {
+    return async(dispatch: any) => {
+        dispatch(loadItemsPending())
+        try {
+            const items = await getcharactersFromEpisodeRange(min, max);
+            dispatch(loadItemsSuccess(items))
+        } catch {
+            dispatch(loadItemsFailed("loading items failed"))
+        }
+    }
+}
+
 
 export default items;
-export { addItem, loadItems }
+export { addItem, loadItems, loadItemsForRange}
