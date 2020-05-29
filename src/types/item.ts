@@ -4,6 +4,7 @@ interface Item {
     subtitle: string;
     description: string;
     imgUrl: string;
+    gender: string;
 }
 
 export default Item;

@@ -1,9 +1,11 @@
 import Item from "./item";
 import { ItemFilters } from "../ducks/itemFilter";
+import Filters from "./filters";
 
 interface State {
     items: Items;
-    itemFilter: ItemFilters; 
+    itemFilter: ItemFilters; // TODO CLEAN UP UNUSED FILTERS
+    filters: Filters;
 }
 
 export interface Items {

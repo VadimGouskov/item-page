@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
-import { updateItemFilter, ItemFilters } from '../ducks/itemFilter';
+import { updateItemFilter } from '../ducks/itemFilter';
 import { loadItemsForRange } from '../ducks/items'
+import { toggleMaleFilter, toggleFemaleFilter, toggleUnknownFilter } from '../ducks/filters'
 import { connect } from 'react-redux';
 
-import { Slider }from '@blueprintjs/core';
+import { Slider, Button }from '@blueprintjs/core';
+import State from '../types/state';
 
 type ItemFilterProps =
 ReturnType<typeof mapStateToProps> &
@@ -19,14 +21,31 @@ const ItemFilter: React.FC<ItemFilterProps> = (props) => {
     }
     
     const changeItemFilter = (value: number) => {
-        props.loadItemsForRange(0, value);
+        props.loadItemsForRange(1, value);
     }
 
     return(
         <div className="columns">
-            ITEM FILTER
-            <button onClick={() => props.updateItemFilter(ItemFilters.SHOW_ALL)}>All items</button>
-            <button onClick={() => props.updateItemFilter(ItemFilters.SHOW_THREE)}>Three items</button>
+            <div className="column is-8">
+                <Button className="bp3-intent-primary"
+                    onClick={props.toggleMaleFilter}
+                    outlined={!props.filters.male}
+                    >
+                    Male
+                </Button>
+                <Button className="bp3-intent-primary"
+                    onClick={props.toggleFemaleFilter}
+                    outlined={!props.filters.female}
+                    >
+                    Female
+                </Button>
+                <Button className="bp3-intent-primary"
+                    onClick={props.toggleUnknownFilter}
+                    outlined={!props.filters.unknown}
+                    >
+                    Unknown
+                </Button>
+            </div>
             <div className='column is-4'>
                 <Slider
                     min={0}
@@ -42,17 +61,19 @@ const ItemFilter: React.FC<ItemFilterProps> = (props) => {
 }
 
 
-
-
-
-const mapStateToProps = () => {
-    return {};
+const mapStateToProps = (state: State) => {
+    return {
+        filters: state.filters
+    };
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return bindActionCreators({ 
         updateItemFilter,
-        loadItemsForRange
+        loadItemsForRange,
+        toggleMaleFilter,
+        toggleFemaleFilter,  
+        toggleUnknownFilter      
     }, dispatch);
 }
 

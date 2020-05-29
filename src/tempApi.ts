@@ -78,6 +78,7 @@ const mapCharactersToItems = (characters: CharacterResult[]): Item[] => {
             subtitle: result.type,
             description: result.species,
             imgUrl: result.image,
+            gender: result.gender
         };
     });
 }

@@ -5,7 +5,7 @@ import { addItem, loadItems } from '../ducks/items';
 import { bindActionCreators } from 'redux';
 import ItemType from '../types/item';
 import State from '../types/state';
-import { ItemFilters } from '../ducks/itemFilter';
+import Filters, { Genders } from '../types/filters';
 
 // COMPONENT
 type ItemPageProps = 
@@ -38,27 +38,33 @@ const getTestItem = (): ItemType => {
     title: "TITLE",
     subtitle: "SUBTITLE",
     description: "DESCRIPTION",
-    imgUrl: "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
+    imgUrl: "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+    gender: 'male',
   }
 }
 
 // METHODS 
-const getFilteredItems = (items: ItemType[], filter: ItemFilters) => {
-  switch(filter) {
-    case ItemFilters.SHOW_ALL:
-      return items;
-    case ItemFilters.SHOW_THREE:
-      return items.slice(0, 3);
-    default:
-       return items;
-  }
+const getFilteredItems = (items: ItemType[], filters: Filters) => {
+  return items.filter((item: ItemType) => { 
+    // TODO fix this unscalable filtering code
+    if(item.gender == Genders.Male && !filters.male) {
+      return false;
+    } else if(item.gender == Genders.Female && !filters.female) {
+      return false;
+    } else if(item.gender == Genders.Unknown && !filters.unknown) {
+      return false;
+    } else {
+      return true
+    }
+  })
 }
 
 // PROP MAPPING
 const mapStateToProps = (state: State) => {
   return {
     items: state.items,
-    filteredItems: getFilteredItems(state.items.items, state.itemFilter),
+    filteredItems: getFilteredItems(state.items.items, state.filters),
+    filters: state.filters
   }
 }
 

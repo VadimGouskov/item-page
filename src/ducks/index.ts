@@ -3,10 +3,12 @@ import items from './items'
 import itemFilter, { ItemFilters } from './itemFilter'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import filters from './filters';
 
 const rootReducer = combineReducers({
-  items: items,
-  itemFilter: itemFilter
+  items,
+  itemFilter,
+  filters,
 });
 
 const initialState = {
@@ -14,7 +16,12 @@ const initialState = {
       pending: false,
       error: {},
       items: []},
-    itemFilter: ItemFilters.SHOW_ALL
+    itemFilter: ItemFilters.SHOW_ALL,
+    filters: {
+      male: true,
+      female: true,
+      unknown: true,
+    }
 }
 
 const middleware: any = [thunk];
