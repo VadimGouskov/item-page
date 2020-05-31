@@ -8,8 +8,12 @@ const App: React.FC = () => {
   return (
     <div>
       <Nav/>
-      <ItemFilter/>
-      <ItemPage />
+      <div className="container">
+        <div className="columns app-columns-outer-container">
+          <div className="column is-8"><ItemPage/></div> 
+          <div className="column is-4"><ItemFilter/></div>
+        </div>
+      </div>
     </div>
   );
 }

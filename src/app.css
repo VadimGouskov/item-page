@@ -1,2 +1,7 @@
 @import '~@blueprintjs/core/lib/css/blueprint.css';
 @import '~bulma-helpers/css/bulma-helpers.min.css';
+
+/* FIX columns margin top bug */
+.app-columns-outer-container{
+    margin-top: auto !important;
+}

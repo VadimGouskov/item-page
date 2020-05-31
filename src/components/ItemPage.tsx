@@ -19,7 +19,7 @@ const ItemPage: React.FC<ItemPageProps> = (props) => {
   }, [props.loadItems])
 
   return (
-    <div className='container'>
+    <div>
         <div className='columns is-multiline'>
             { props.filteredItems.map((item: ItemType) => (
                 <div key={item.id} className='column is-4'>

@@ -25,7 +25,7 @@ const ItemFilter: React.FC<ItemFilterProps> = (props) => {
     }
 
     return(
-        <div className="columns">
+        <div className="colums">
             <div className="column is-8">
                 <Button className="bp3-intent-primary"
                     onClick={props.toggleMaleFilter}
