@@ -1,13 +1,17 @@
 interface Filters{ 
-    male: boolean;
-    female: boolean;
-    unknown: boolean;
+    gender: {
+        male: boolean;
+        female: boolean;
+        genderless: boolean;
+        unknown: boolean;
+    };
 }
 
 export enum Genders {
     Male = 'Male',
     Female = 'Female',
-    Unknown = 'Unknown',
+    Genderless = 'Genderless',
+    Unknown = 'unknown',
 }
 
 export default Filters;

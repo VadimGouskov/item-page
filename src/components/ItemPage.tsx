@@ -47,11 +47,13 @@ const getTestItem = (): ItemType => {
 const getFilteredItems = (items: ItemType[], filters: Filters) => {
   return items.filter((item: ItemType) => { 
     // TODO fix this unscalable filtering code
-    if(item.gender == Genders.Male && !filters.male) {
+    if(item.gender == Genders.Male && !filters.gender.male) {
       return false;
-    } else if(item.gender == Genders.Female && !filters.female) {
+    } else if(item.gender == Genders.Female && !filters.gender.female) {
       return false;
-    } else if(item.gender == Genders.Unknown && !filters.unknown) {
+    } else if(item.gender == Genders.Genderless && !filters.gender.genderless) {
+      return false;
+    } else if(item.gender == Genders.Unknown && !filters.gender.unknown) {
       return false;
     } else {
       return true

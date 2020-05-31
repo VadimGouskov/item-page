@@ -18,9 +18,12 @@ const initialState = {
       items: []},
     itemFilter: ItemFilters.SHOW_ALL,
     filters: {
-      male: true,
-      female: true,
-      unknown: true,
+      gender: {
+        male: true,
+        female: true,
+        unknown: true,
+        genderless: true,
+      }
     }
 }
 

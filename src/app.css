@@ -5,3 +5,8 @@
 .app-columns-outer-container{
     margin-top: auto !important;
 }
+
+.ip-filter-box {
+    padding: 20px; 
+    position: fixed;
+}
