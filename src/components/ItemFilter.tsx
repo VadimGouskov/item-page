@@ -26,7 +26,7 @@ const ItemFilter: React.FC<ItemFilterProps> = (props) => {
     }
 
     return(
-        <div className="colums ip-filter-box card">
+        <div className="colums ip-filter-box">
             <h2 className="is-size-4">Gender</h2>
             <div className="column bp3-button-group bp3-large bp3-fill">
                 <Button className="bp3-intent-primary"

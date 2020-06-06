@@ -27,20 +27,8 @@ const ItemPage: React.FC<ItemPageProps> = (props) => {
                 </div> 
             )) }
         </div>
-        <button onClick={() => props.addItem(getTestItem())}>ADD</button>
     </div>
   )
-}
-
-const getTestItem = (): ItemType => {
-  return {
-    id: (Math.random()*10000).toString(),
-    title: "TITLE",
-    subtitle: "SUBTITLE",
-    description: "DESCRIPTION",
-    imgUrl: "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
-    gender: 'male',
-  }
 }
 
 // METHODS 
@@ -49,11 +37,11 @@ const getFilteredItems = (items: ItemType[], filters: Filters) => {
     // TODO fix this unscalable filtering code
     if(item.gender == Genders.Male && !filters.gender.male) {
       return false;
-    } else if(item.gender == Genders.Female && !filters.gender.female) {
+    } else if(item.gender === Genders.Female && !filters.gender.female) {
       return false;
-    } else if(item.gender == Genders.Genderless && !filters.gender.genderless) {
+    } else if(item.gender === Genders.Genderless && !filters.gender.genderless) {
       return false;
-    } else if(item.gender == Genders.Unknown && !filters.gender.unknown) {
+    } else if(item.gender === Genders.Unknown && !filters.gender.unknown) {
       return false;
     } else {
       return true

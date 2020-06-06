@@ -2,11 +2,35 @@
 @import '~bulma-helpers/css/bulma-helpers.min.css';
 
 /* FIX columns margin top bug */
-.app-columns-outer-container{
+.app-outer-container{
     margin-top: auto !important;
+    position: relative;
 }
 
 .ip-filter-box {
     padding: 20px; 
     position: fixed;
+    background-color: white;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .ip-filter-box {
+        position: fixed;
+        bottom: 0; 
+        z-index: 1;
+        order: 0;
+        border-color: black;
+        border-top-style: solid;
+        width: 100%;
+    }
+
+    .filter-container {
+        margin: auto 0;
+    }
+
+    .item-container {
+        order: 1;
+        padding-top: 100px;
+    }
 }

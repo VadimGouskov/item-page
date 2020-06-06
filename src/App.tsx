@@ -9,9 +9,9 @@ const App: React.FC = () => {
     <div>
       <Nav/>
       <div className="container">
-        <div className="columns app-columns-outer-container">
-          <div className="column is-8"><ItemPage/></div> 
-          <div className="column is-4"><ItemFilter/></div>
+        <div className="columns app-outer-container">
+           <div className="column is-8 item-container"><ItemPage/></div> 
+           <div className="column is-4 filter-container"><ItemFilter/></div>
         </div>
       </div>
     </div>
