@@ -8,18 +8,18 @@ import State from '../types/state';
 import Filters, { Genders } from '../types/filters';
 
 // COMPONENT
-type ItemPageProps = 
+type ItemFeedProps = 
   ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>;
 
-const ItemPage: React.FC<ItemPageProps> = (props) => {
+const ItemFeed: React.FC<ItemFeedProps> = (props) => {
 
   useEffect(() => {
     props.loadItems();
   }, [props.loadItems])
 
   return (
-    <div>
+    <div className='item-container'>
         <div className='columns is-multiline'>
             { props.filteredItems.map((item: ItemType) => (
                 <div key={item.id} className='column is-4'>
@@ -34,17 +34,23 @@ const ItemPage: React.FC<ItemPageProps> = (props) => {
 // METHODS 
 const getFilteredItems = (items: ItemType[], filters: Filters) => {
   return items.filter((item: ItemType) => { 
+
+    // if no filters are selected, display all items
+    if(!Object.values(filters.gender).some(filter => filter === true)){
+        return items;
+    }
+
     // TODO fix this unscalable filtering code
-    if(item.gender == Genders.Male && !filters.gender.male) {
-      return false;
+    if(item.gender === Genders.Male && !filters.gender.male) {
+        return false;
     } else if(item.gender === Genders.Female && !filters.gender.female) {
-      return false;
+        return false;
     } else if(item.gender === Genders.Genderless && !filters.gender.genderless) {
-      return false;
+        return false;
     } else if(item.gender === Genders.Unknown && !filters.gender.unknown) {
-      return false;
+        return false;
     } else {
-      return true
+        return true
     }
   })
 }
@@ -65,4 +71,4 @@ const mapDispatchToProps = (dispatch: any) => {
     }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemFeed);
