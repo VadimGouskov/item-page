@@ -25,7 +25,9 @@ jobs:
       - name: Install Packages
         run: npm install
       - name: Build
-        run: npm run build  
+        run: npm run build 
+        env:
+          CI: false
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
